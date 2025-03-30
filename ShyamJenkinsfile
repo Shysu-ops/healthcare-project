@@ -28,6 +28,17 @@ pipeline {
            sh 'docker build -t balunideepak/healthcare:latest .'
             }
           }
-                
+     stage('Login to Dockerhub') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'docker-id-user', passwordVariable: 'dockerpass', usernameVariable: 'dockeruser')]) {
+        sh 'docker login -u ${dockeruser} -p ${dockerpass}'
+                      }
+                 }
+            }
+     stage('Push the Docker image') {
+      steps {
+        sh 'docker push balunideepak/healthcare:latest'
+                   }
+            }
      }
 }
