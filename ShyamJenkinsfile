@@ -25,7 +25,7 @@ pipeline {
      stage('Docker Image Creation') {
       steps {
            echo 'This is for Docker image build'
-           sh 'docker build -t balunideepak/healthcare:latest .'
+           sh 'docker build -t shysu964/healthcare:latest .'
             }
           }
      stage('Login to Dockerhub') {
@@ -37,7 +37,7 @@ pipeline {
             }
      stage('Push the Docker image') {
       steps {
-        sh 'docker push balunideepak/healthcare:latest'
+        sh 'docker push shysu964/healthcare:latest'
                    }
             }
      stage('Ansbile config and Deployment') {
